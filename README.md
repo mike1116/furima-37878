@@ -1,24 +1,69 @@
-# README
+# DB 設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users table
 
-Things you may want to cover:
+| Column             | Type                | Options                   |
+|--------------------|---------------------|---------------------------|
+| nickname           | string              | null: false               |
+| email              | string              | null: false,unique: true  |
+| encrypted_password | string              | null: false               |
+| password_confirmation  | string              | null: false               |
+| firstname          | string              | null: false               |
+| lastname           | string              | null: false               |
+| read_lastname      | string              | null: false               |
+| read_firstname     | string              | null: false               |
+| birth              | string              | null: false               |
 
-* Ruby version
 
-* System dependencies
+### Association
 
-* Configuration
+* has_many :items
+* has_many :records
+* has_many :deliveries
 
-* Database creation
+## items table
 
-* Database initialization
+| Column                              | Type       | Options                        |
+|-------------------------------------|------------|--------------------------------|
+| title                               | string     | null: false                    |
+| profile                             | text       | null: false                    |
+| user                                | references | null: false, foreign_key: true |
+| price                               | string     | null: false                    |
+| saler_id                               | string     | null: false                    |
+| buyer_id                               | string     | null: false                    |
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+### Association
 
-* Deployment instructions
+- belongs_to :users
+- has_one :records
 
-* ...
+## records table
+
+| Column      | Type       | Options                        |
+|-------------|------------|--------------------------------|
+| title                               | string        | null: false                    |
+| profile                             | text          | null: false                    |
+| user                                | references    | null: false, foreign_key: true |
+| price                               | string        | null: false                    |
+| saler_id                               | string     | null: false                    |
+| buyer_id                               | string     | null: false                    |
+
+### Association
+
+- belongs_to :users
+- has_one :items
+- has_many :deliveries
+
+## deliveries table
+
+| Column      | Type       | Options                        |
+|-------------|------------|--------------------------------|
+| post                  | string       | null: false                    |
+| prefecture            | string       | null: false                    |
+| municipalities        | string       | null: false                    |
+| address               | string       | null: false                    |
+| building_name         | string       | null: false                    |
+| phone_number          | string       | null: false                    |
+
+- belongs_to :records
