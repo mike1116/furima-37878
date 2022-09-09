@@ -10,14 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_08_034500) do
+##<<<<<<< HEAD
+##ActiveRecord::Schema.define(version: 2022_09_08_034500) do
 
-  create_table "articles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.string "title", null: false
-    t.text "text", null: false
-    t.integer "genre_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
+ # create_table "articles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  #  t.string "title", null: false
+  #  t.text "text", null: false
+  #  t.integer "genre_id", null: false
+  #  t.datetime "created_at", precision: 6, null: false
+  #  t.datetime "updated_at", precision: 6, null: false
+  #end
+#=======
+#ActiveRecord::Schema.define(version: 0) do
+#>>>>>>> 3b9b7f4fd33f1685a774ba1d9b2c9989601f9de2
 
-end
+#end
